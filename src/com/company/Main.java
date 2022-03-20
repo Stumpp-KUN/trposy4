@@ -4,15 +4,6 @@ import java.util.*;
 
 public class Main {
     static Scanner scan=new Scanner(System.in);
-
-
-    private static final Comparator<String> comparator = new Comparator<String>() {
-        @Override
-        public int compare(String o1, String o2) {
-            return o1.length() - o2.length();
-        }
-    };
-
     public static void main(String[] args) {
 
         System.out.println("Введите количество статей ");
@@ -25,7 +16,15 @@ public class Main {
         List<String> lines = Arrays.asList(articles);
         System.out.println(lines);
 
-        Collections.sort(lines, comparator);
+        Collections.sort(lines, new SortByLength());
         System.out.println(lines);
+    }
+}
+
+class SortByLength implements Comparator<String>{
+
+    @Override
+    public int compare(String o1, String o2) {
+        return o1.length() - o2.length();
     }
 }
